@@ -1,0 +1,865 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation Laravel App Abdul Goffar",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/auth": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "auth or login",
+                "operationId": "auth user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "token",
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5jb20iLCJpYXQiOjE2ODkyNzI5MzAsImV4cCI6MTY4OTg3NzczMH0.SE94w_fKpAqAmPnnWsR5FCq9CvGWa0ecgDnsrO4_DD0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "operationId": "delete token or log out",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "operationId": "get all category",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "current_page",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "type": "string",
+                                            "example": "[]"
+                                        },
+                                        "first_page_url": {
+                                            "description": "first_page_url",
+                                            "type": "string",
+                                            "example": "http:\\/\\/127.0.0.1:8000\\/api\\/categories?page=1"
+                                        },
+                                        "from": {
+                                            "description": "from",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "last_page": {
+                                            "description": "last_page",
+                                            "type": "integer",
+                                            "example": "3"
+                                        },
+                                        "last_page_url": {
+                                            "description": "last_page_url",
+                                            "type": "string",
+                                            "example": "http:\\/\\/127.0.0.1:8000\\/api\\/categories?page=3"
+                                        },
+                                        "links": {
+                                            "description": "links",
+                                            "type": "string",
+                                            "example": "[]"
+                                        },
+                                        "next_page_url": {
+                                            "description": "next_page_url",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "path": {
+                                            "description": "path",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "per_page": {
+                                            "description": "per_page",
+                                            "type": "integer",
+                                            "example": "4"
+                                        },
+                                        "prev_page_url": {
+                                            "description": "prev_page_url",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "to": {
+                                            "description": "to",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "total": {
+                                            "description": "total",
+                                            "type": "integer",
+                                            "example": "7"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthC": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "operationId": "post data category",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "baju laki-laki"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "baju laki-laki"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Data Invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthC": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/{id}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "operationId": "get by id category",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "id",
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "jacket laki-laki"
+                                        },
+                                        "deleted_at": {
+                                            "description": "deleted_at",
+                                            "type": "string",
+                                            "example": "2023-07-13T10:10:44.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "updated_at",
+                                            "type": "string",
+                                            "example": "2023-07-13T10:10:44.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthC": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "operationId": "put data category",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "baju perempuan"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "baju perempuan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Data Invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthC": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "operationId": "delete data category",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthC": []
+                    }
+                ]
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "product"
+                ],
+                "operationId": "get all product",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "current_page",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "type": "string",
+                                            "example": "[]"
+                                        },
+                                        "first_page_url": {
+                                            "description": "first_page_url",
+                                            "type": "string",
+                                            "example": "http:\\/\\/127.0.0.1:8000\\/api\\/categories?page=1"
+                                        },
+                                        "from": {
+                                            "description": "from",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "last_page": {
+                                            "description": "last_page",
+                                            "type": "integer",
+                                            "example": "3"
+                                        },
+                                        "last_page_url": {
+                                            "description": "last_page_url",
+                                            "type": "string",
+                                            "example": "http:\\/\\/127.0.0.1:8000\\/api\\/categories?page=3"
+                                        },
+                                        "links": {
+                                            "description": "links",
+                                            "type": "string",
+                                            "example": "[]"
+                                        },
+                                        "next_page_url": {
+                                            "description": "next_page_url",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "path": {
+                                            "description": "path",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "per_page": {
+                                            "description": "per_page",
+                                            "type": "integer",
+                                            "example": "4"
+                                        },
+                                        "prev_page_url": {
+                                            "description": "prev_page_url",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "to": {
+                                            "description": "to",
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "total": {
+                                            "description": "total",
+                                            "type": "integer",
+                                            "example": "7"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthP": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "product"
+                ],
+                "operationId": "post data product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "jacket laki-laki"
+                                    },
+                                    "category": {
+                                        "description": "category",
+                                        "type": "integer",
+                                        "example": "12"
+                                    },
+                                    "price": {
+                                        "description": "price",
+                                        "type": "integer",
+                                        "example": "120000"
+                                    },
+                                    "stock": {
+                                        "description": "stock",
+                                        "type": "integer",
+                                        "example": "13452"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "jacket laki-laki"
+                                        },
+                                        "category": {
+                                            "description": "category",
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "price": {
+                                            "description": "price",
+                                            "type": "integer",
+                                            "example": "120000"
+                                        },
+                                        "stock": {
+                                            "description": "stock",
+                                            "type": "integer",
+                                            "example": "13452"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Data Invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthP": []
+                    }
+                ]
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "product"
+                ],
+                "operationId": "get product by id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "id",
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "jacket laki-laki"
+                                        },
+                                        "category": {
+                                            "description": "category",
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "price": {
+                                            "description": "price",
+                                            "type": "integer",
+                                            "example": "120000"
+                                        },
+                                        "stock": {
+                                            "description": "stock",
+                                            "type": "integer",
+                                            "example": "13452"
+                                        },
+                                        "deleted_at": {
+                                            "description": "deleted_at",
+                                            "type": "string",
+                                            "example": "2023-07-13T10:10:44.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "updated_at",
+                                            "type": "string",
+                                            "example": "2023-07-13T10:10:44.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthP": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "product"
+                ],
+                "operationId": "put data product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "celana laki-laki"
+                                    },
+                                    "category": {
+                                        "description": "category",
+                                        "type": "integer",
+                                        "example": "34"
+                                    },
+                                    "price": {
+                                        "description": "price",
+                                        "type": "integer",
+                                        "example": "340000"
+                                    },
+                                    "stock": {
+                                        "description": "stock",
+                                        "type": "integer",
+                                        "example": "13452"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "celana laki-laki"
+                                        },
+                                        "category": {
+                                            "description": "category",
+                                            "type": "integer",
+                                            "example": "34"
+                                        },
+                                        "price": {
+                                            "description": "price",
+                                            "type": "integer",
+                                            "example": "340000"
+                                        },
+                                        "stock": {
+                                            "description": "stock",
+                                            "type": "integer",
+                                            "example": "13452"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Data Invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthP": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "product"
+                ],
+                "operationId": "delete data product",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthP": []
+                    }
+                ]
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "get user data by token auth",
+                "operationId": "get data user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "id",
+                                            "type": "integer",
+                                            "example": "123"
+                                        },
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "abd goffar"
+                                        },
+                                        "email": {
+                                            "description": "email",
+                                            "type": "string",
+                                            "example": "abd@gmail.com"
+                                        },
+                                        "password": {
+                                            "description": "password",
+                                            "type": "string",
+                                            "example": "abd goffar 12345"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuthU": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "user registration",
+                "operationId": "post data user",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "abd goffar"
+                                    },
+                                    "email": {
+                                        "description": "email",
+                                        "type": "string",
+                                        "example": "abd@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "password",
+                                        "type": "string",
+                                        "example": "abd goffar 12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "name",
+                                            "type": "string",
+                                            "example": "abd goffar"
+                                        },
+                                        "email": {
+                                            "description": "email",
+                                            "type": "string",
+                                            "example": "abd@gmail.com"
+                                        },
+                                        "password": {
+                                            "description": "password",
+                                            "type": "string",
+                                            "example": "abd goffar 12345"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Data Invalid"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": " Use /auth to get the JWT token",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            },
+            "bearerAuthC": {
+                "type": "http",
+                "description": " Use /auth to get the JWT token",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            },
+            "bearerAuthP": {
+                "type": "http",
+                "description": " Use /auth to get the JWT token",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            },
+            "bearerAuthU": {
+                "type": "http",
+                "description": " Use /auth to get the JWT token",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
