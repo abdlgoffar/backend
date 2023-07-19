@@ -65,17 +65,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-# STEP BY STEP BUILD SYSTEM, RESTFULL API PHP LARAVEL
+# BEST STEP BUILD API WITH LARAVEL
 
 -   CREATE MODELS AND TABLE MIGRATION
--   01 php artisan make:model Product -m; command create model entity and table migration
+-   01 php artisan make:model Product -m; command create model entity and table migration.
 -
 -   CREATE CONTROLLER
--   01 php artisan make:controller Api\\ProductController --model=Product; command for create controller
+-   01 php artisan make:controller Api\\ProductController --model=Product; command for create controller.
 
-# DOC LARAVEL RESTFULL API WITH SWAGGER
+# HOW TO MAKE DOC LARAVEL RESTFULL API WITH SWAGGER
 
--   01 install swagger dengan commend: composer require darkaonline/l5-swagger
--   02 publish swagger dependency dengan command: php artisan vendor:publish
--   03 tambahkan class Swagger pada AppServiceProvider.php $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class); di laravel
--   04 tambahkan folder Swagger ke folder Http laravel project
+-   01 install swagger with commend: composer require darkaonline/l5-swagger.
+-   02 publish swagger dependency with command: php artisan vendor:publish.
+-   03 add class Swagger on AppServiceProvider.php $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class); in laravel.
+-   04 add path Swagger ui to path app/Http laravel project.
+
+# HOW TO RUNN THIS API DOCUMENTATION
+
+-   01 runn laravel server application.
+-   02 go to http://127.0.0.1:8000/api/documentation
