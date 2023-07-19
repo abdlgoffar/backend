@@ -32,6 +32,27 @@ class AuthController extends Controller
      *     tags={"user"},
      *     description="auth or login",
      *     operationId="auth user",
+     *     @OA\RequestBody(
+     *       required=true,
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(
+     *              type="object",
+     *               @OA\Property(
+     *                   property="email",
+     *                   description="email",
+     *                   type="string",
+     *                   example="abd@gmail.com"
+     *               ),
+     *               @OA\Property(
+     *                   property="password",
+     *                   description="password",
+     *                   type="string",
+     *                   example="abd goffar 12345"
+     *               ),
+     *            )
+     *         )
+     *      ),
      *      @OA\Response(
      *         response="200",
      *         description="OK",
