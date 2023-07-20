@@ -100,7 +100,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @OA\Delete(
      *     path="/api/logout",
      *     tags={"user"},
      *     security={ {"bearerAuth":{}}},

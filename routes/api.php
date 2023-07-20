@@ -21,7 +21,7 @@ Route::post('/auth', [AuthController::class, 'auth']);
 Route::middleware([EnsureTokenIsValid::class])->group(function () {
 
     Route::get('/users', [UserController::class, 'get']);
-    Route::get('/logout', [AuthController::class, 'logOut']);
+    Route::delete('/logout', [AuthController::class, 'logOut']);
 
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{id}', [ProductController::class, 'getById']);
