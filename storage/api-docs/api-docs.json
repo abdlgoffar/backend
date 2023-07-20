@@ -59,7 +59,7 @@
             }
         },
         "/api/logout": {
-            "get": {
+            "delete": {
                 "tags": [
                     "user"
                 ],
